@@ -20,11 +20,11 @@ jobs:
           TZ: "Asia/Tokyo"
         run: |
           TIME=$(date +'%Y%m%d%H%M%S')
-          echo "TAG_NAME=$TIME${{ github.sha }}" >> $GITHUB_ENV
+          echo "TAG=$TIME_$GITHUB_SHA" >> $GITHUB_ENV
 
       - name: Build image
-        run: docker build -t asia-northeast1-docker.pkg.dev/unabara-scrapbox-notification/main-application-container:${{ env.TAG_NAME }} .
+        run: docker build -t asia-northeast1-docker.pkg.dev/unabara-scrapbox-notification/main-application-container:${{ env.TAG }} .
 
       - name: Push image
         run: |
-          docker push asia-northeast1-docker.pkg.dev/unabara-scrapbox-notification/main-application-container:${{ env.TAG_NAME }}
+          docker push asia-northeast1-docker.pkg.dev/unabara-scrapbox-notification/main-application-container:${{ env.TAG }}
