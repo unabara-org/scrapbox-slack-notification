@@ -9,8 +9,22 @@ jobs:
         with:
           credentials_json: "${{ secrets.GCP_CREDENTIALS }}"
 
-      - name: "Set up Cloud SDK"
+      - name: Set up Cloud SDK
         uses: "google-github-actions/setup-gcloud@v0"
 
-      - name: "Use gcloud CLI"
-        run: "gcloud info"
+      - name: Docker を構成する
+        run: gcloud auth configure-docker asia-northeast1-docker.pkg.dev
+
+      - name: Build tag name
+        env:
+          TZ: "Asia/Tokyo"
+        run: |
+          TIME=$(date +'%Y%m%d%H%M%S')
+          echo 'TAG_NAME=$TIME${{ github.sha }}' >> $GITHUB_ENV
+
+      - name: Build image
+        run: docker build -t asia-northeast1-docker.pkg.dev/unabara-scrapbox-notification/main-application-container:${{ env.TAG_NAME }} .
+
+      - name: Push image
+        run: |
+          docker push asia-northeast1-docker.pkg.dev/unabara-scrapbox-notification/main-application-container:${{ env.TAG_NAME }}
