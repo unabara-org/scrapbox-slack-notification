@@ -40,4 +40,5 @@ jobs:
           gcloud run deploy app \
             --image=${{ secrets.IMAGE_NAME }}:${{ env.TAG }} \
             --region=asia-northeast1 \
-            --allow-unauthenticated
+            --allow-unauthenticated \
+            --revision-suffix=${{ env.TAG }}
