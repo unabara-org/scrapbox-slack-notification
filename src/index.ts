@@ -1,6 +1,9 @@
-import crypt from "crypto";
+import http from "http";
 
-const md5 = crypt.createHash("md5");
-const hex = md5.update("foo").digest("hex");
+const server = http.createServer((req, res) => {
+  console.log(req);
 
-console.log(hex);
+  res.end("Hello World");
+});
+
+server.listen(8080);
