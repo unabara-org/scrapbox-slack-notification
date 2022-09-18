@@ -1,9 +1,12 @@
-import http from "http";
+import express from 'express';
 
-const server = http.createServer((req, res) => {
-  console.log(req);
+const app = express();
+const port = 8080;
 
-  res.end("Hello World 2");
+app.post('/push_to_slack', (req, res) => {
+  res.send('hello world');
 });
 
-server.listen(8080);
+app.listen(port, () => {
+  console.log(`App listening on port ${port}`);
+});
