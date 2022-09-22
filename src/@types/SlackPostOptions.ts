@@ -1,14 +1,12 @@
-type SlackPostOptions = {
+export type SlackPostOptions = {
   channel: string;
   text: string;
-  attachments: Attachments[];
+  attachments: SlackPostOptionsAttachments[];
 };
 
-type Attachments = {
+export type SlackPostOptionsAttachments = {
   title: string;
   title_link: string;
   text: string;
   author_name: string;
 };
-
-export default SlackPostOptions;

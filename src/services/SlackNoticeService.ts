@@ -1,5 +1,5 @@
 import { WebClient } from '@slack/web-api';
-import SlackPostOptions from '../@types/SlackPostOptions';
+import { SlackPostOptions } from '../@types/SlackPostOptions';
 
 const SlackNoticeService = () => {
   const push = async (
