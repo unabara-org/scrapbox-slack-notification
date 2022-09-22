@@ -19,16 +19,16 @@ app.post('/push_to_slack', (req, res) => {
   }
   const scrapboxNoticeObj = req.body as ScrapboxNotice;
 
-  if (ScrapboxService().isNotifiable(scrapboxNoticeObj)) {
-    const token = process.env.SLACK_API_TOKEN as string;
+  const token = process.env.SLACK_API_TOKEN as string;
 
-    let options: SlackPostOptions = {
-      channel: 'unabara_scrapbox',
-      text: scrapboxNoticeObj.text,
-      attachments: [],
-    };
+  let options: SlackPostOptions = {
+    channel: 'unabara_scrapbox',
+    text: scrapboxNoticeObj.text,
+    attachments: [],
+  };
 
-    for (const item of scrapboxNoticeObj.attachments) {
+  for (const item of scrapboxNoticeObj.attachments) {
+    if (ScrapboxService().isNotifiable(item)) {
       options.attachments.push({
         title: item.title,
         title_link: item.title_link,
@@ -36,7 +36,9 @@ app.post('/push_to_slack', (req, res) => {
         author_name: item.author_name,
       });
     }
+  }
 
+  if (options.attachments.length > 0) {
     SlackNoticeService().push(token, options);
   }
 

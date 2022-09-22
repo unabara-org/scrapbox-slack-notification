@@ -19,18 +19,16 @@ export type ScrapboxNotice = {
   readonly text: string;
   readonly mrkdwn: boolean;
   readonly username: string;
-  readonly attachments: Attachments;
+  readonly attachments: ScrapboxNoticeAttachment[];
 };
 
-type Attachments = [
-  {
-    readonly title: string;
-    readonly title_link: string;
-    readonly text: string;
-    readonly rawText: string;
-    readonly mrkdwn_in: MrkdwnIn;
-    readonly author_name: string;
-  }
-];
+export type ScrapboxNoticeAttachment = {
+  readonly title: string;
+  readonly title_link: string;
+  readonly text: string;
+  readonly rawText: string;
+  readonly mrkdwn_in: MrkdwnIn;
+  readonly author_name: string;
+};
 
 type MrkdwnIn = readonly [string];

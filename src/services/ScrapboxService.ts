@@ -1,9 +1,17 @@
-import { ScrapboxNotice } from '../@types/ScrapboxNotice';
+import {
+  ScrapboxNotice,
+  ScrapboxNoticeAttachment,
+} from '../@types/ScrapboxNotice';
 
 const ScrapboxService = () => {
-  const isNotifiable = (notice: ScrapboxNotice) => {
-    // todo: どのようなルールで通知可とするか
-    return true;
+  const isNotifiable = (attachment: ScrapboxNoticeAttachment): boolean => {
+    const regexList = [/^日報[\s　].*/, /^下書き[\s　].*/];
+
+    return (
+      regexList.filter((regex) => {
+        return attachment.title.match(regex) != null;
+      }).length === 0
+    );
   };
 
   return { isNotifiable };
