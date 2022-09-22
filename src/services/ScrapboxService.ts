@@ -14,7 +14,19 @@ const ScrapboxService = () => {
     );
   };
 
-  return { isNotifiable };
+  const filterNotifiable = (notice: ScrapboxNotice) => {
+    const result: ScrapboxNotice = { ...notice, attachments: [] };
+
+    for (const item of notice.attachments) {
+      if (ScrapboxService().isNotifiable(item)) {
+        result.attachments.push(item);
+      }
+    }
+
+    return result;
+  };
+
+  return { isNotifiable, filterNotifiable };
 };
 
 export default ScrapboxService;
