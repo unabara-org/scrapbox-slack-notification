@@ -31,4 +31,4 @@ export type ScrapboxNoticeAttachment = {
   readonly author_name: string;
 };
 
-type MrkdwnIn = readonly [string];
+type MrkdwnIn = readonly string[];

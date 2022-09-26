@@ -5,7 +5,7 @@ import {
 
 export const ScrapboxService = () => {
   const isNotifiable = (attachment: ScrapboxNoticeAttachment): boolean => {
-    const ignoreTitlePatterns = [/^日報[\s　].*/, /^下書き[\s　].*/];
+    const ignoreTitlePatterns = [/^日報[\s　]/, /^下書き[\s　]/];
 
     return (
       ignoreTitlePatterns.filter((regex) => {
