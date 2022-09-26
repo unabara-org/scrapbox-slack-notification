@@ -4,8 +4,8 @@ import {
 } from '../../../@types/ScrapboxNotice';
 import { ScrapboxService } from '../../../services/ScrapboxService';
 
-describe('ScrapboxService() のテスト', () => {
-  describe('isNotifiable() のテスト', () => {
+describe('ScrapboxService()', () => {
+  describe('isNotifiable()', () => {
     const baseAttachment: ScrapboxNoticeAttachment = {
       title: '',
       title_link: '',
@@ -67,7 +67,7 @@ describe('ScrapboxService() のテスト', () => {
     });
   });
 
-  describe('filterNotifiable() のテスト', () => {
+  describe('filterNotifiable()', () => {
     const baseScrapboxNotice: ScrapboxNotice = {
       username: '',
       text: '',
