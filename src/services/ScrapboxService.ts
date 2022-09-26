@@ -5,10 +5,10 @@ import {
 
 export const ScrapboxService = () => {
   const isNotifiable = (attachment: ScrapboxNoticeAttachment): boolean => {
-    const regexList = [/^日報[\s　].*/, /^下書き[\s　].*/];
+    const ignoreTitlePatterns = [/^日報[\s　].*/, /^下書き[\s　].*/];
 
     return (
-      regexList.filter((regex) => {
+      ignoreTitlePatterns.filter((regex) => {
         return regex.test(attachment.title);
       }).length === 0
     );
