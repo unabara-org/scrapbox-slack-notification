@@ -1,7 +1,7 @@
 import { WebClient } from '@slack/web-api';
 import { SlackPostOptions } from '../@types/SlackPostOptions';
 
-const SlackNoticeService = () => {
+export const SlackNoticeService = () => {
   const push = async (
     token: string,
     options: SlackPostOptions
@@ -14,5 +14,3 @@ const SlackNoticeService = () => {
 
   return { push };
 };
-
-export default SlackNoticeService;

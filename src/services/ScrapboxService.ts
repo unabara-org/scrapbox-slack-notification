@@ -3,7 +3,7 @@ import {
   ScrapboxNoticeAttachment,
 } from '../@types/ScrapboxNotice';
 
-const ScrapboxService = () => {
+export const ScrapboxService = () => {
   const isNotifiable = (attachment: ScrapboxNoticeAttachment): boolean => {
     const regexList = [/^日報[\s　].*/, /^下書き[\s　].*/];
 
@@ -28,5 +28,3 @@ const ScrapboxService = () => {
 
   return { isNotifiable, filterNotifiable };
 };
-
-export default ScrapboxService;

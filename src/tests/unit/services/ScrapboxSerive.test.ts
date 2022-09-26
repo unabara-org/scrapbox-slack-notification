@@ -2,7 +2,7 @@ import {
   ScrapboxNotice,
   ScrapboxNoticeAttachment,
 } from '../../../@types/ScrapboxNotice';
-import ScrapboxService from '../../../services/ScrapboxService';
+import { ScrapboxService } from '../../../services/ScrapboxService';
 
 describe('ScrapboxService() のテスト', () => {
   describe('isNotifiable() のテスト', () => {

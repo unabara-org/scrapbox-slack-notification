@@ -1,8 +1,8 @@
 import express from 'express';
 import { ScrapboxNotice } from './@types/ScrapboxNotice';
 import { SlackPostOptionsAttachments } from './@types/SlackPostOptions';
-import ScrapboxService from './services/ScrapboxService';
-import SlackNoticeService from './services/SlackNoticeService';
+import { ScrapboxService } from './services/ScrapboxService';
+import { SlackNoticeService } from './services/SlackNoticeService';
 
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
