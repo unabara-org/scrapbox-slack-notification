@@ -5,7 +5,7 @@ import {
 
 const ScrapboxService = () => {
   const isNotifiable = (attachment: ScrapboxNoticeAttachment): boolean => {
-    const regexList = [/^日報[\s　].*/, /^下書き[\s　].*/];
+    const regexList = [/^日報[\s　]/, /^下書き[\s　]/];
 
     return (
       regexList.filter((regex) => {
