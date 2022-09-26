@@ -9,7 +9,7 @@ export const ScrapboxService = () => {
 
     return (
       regexList.filter((regex) => {
-        return attachment.title.match(regex) != null;
+        return regex.test(attachment.title);
       }).length === 0
     );
   };
