@@ -14,16 +14,13 @@ export const ScrapboxService = () => {
     );
   };
 
-  const filterNotifiable = (notice: ScrapboxNotice) => {
-    const result: ScrapboxNotice = { ...notice, attachments: [] };
-
-    for (const item of notice.attachments) {
-      if (ScrapboxService().isNotifiable(item)) {
-        result.attachments.push(item);
-      }
-    }
-
-    return result;
+  const filterNotifiable = (notice: ScrapboxNotice): ScrapboxNotice => {
+    return {
+      ...notice,
+      attachments: notice.attachments.filter((attachment) =>
+        ScrapboxService().isNotifiable(attachment)
+      ),
+    };
   };
 
   return { isNotifiable, filterNotifiable };
