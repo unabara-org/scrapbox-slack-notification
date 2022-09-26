@@ -15,55 +15,66 @@ describe('ScrapboxService()', () => {
       author_name: '',
     };
 
-    test('「日報 」の場合 false になる', async () => {
-      const attachment = { ...baseAttachment, title: '日報 あいうえお' };
-      expect(ScrapboxService().isNotifiable(attachment)).toBe(false);
-    });
+    test('title の文字列が「日報or下書き」で始まり、次に半角or全角の空白がある場合は false が返却される、それ以外の場合は true が返却される', async () => {
+      expect(
+        ScrapboxService().isNotifiable({
+          ...baseAttachment,
+          title: '日報 あいうえお',
+        })
+      ).toBe(false);
 
-    test('「日報　」の場合 false になる', async () => {
-      const attachment = { ...baseAttachment, title: '日報　あいうえお' };
-      expect(ScrapboxService().isNotifiable(attachment)).toBe(false);
-    });
+      expect(
+        ScrapboxService().isNotifiable({
+          ...baseAttachment,
+          title: '日報　あいうえお',
+        })
+      ).toBe(false);
 
-    test('「日報あいうえお」の場合 true になる', async () => {
-      const attachment = { ...baseAttachment, title: '日報あいうえお' };
-      expect(ScrapboxService().isNotifiable(attachment)).toBe(true);
-    });
+      expect(
+        ScrapboxService().isNotifiable({
+          ...baseAttachment,
+          title: '日報あいうえお',
+        })
+      ).toBe(true);
 
-    test('「あいうえお日報あいうえお」の場合 true になる', async () => {
-      const attachment = {
-        ...baseAttachment,
-        title: 'あいうえお日報あいうえお',
-      };
-      expect(ScrapboxService().isNotifiable(attachment)).toBe(true);
-    });
+      expect(
+        ScrapboxService().isNotifiable({
+          ...baseAttachment,
+          title: 'あいうえお日報あいうえお',
+        })
+      ).toBe(true);
 
-    test('「下書き 」の場合 false になる', async () => {
-      const attachment = { ...baseAttachment, title: '下書き あいうえお' };
-      expect(ScrapboxService().isNotifiable(attachment)).toBe(false);
-    });
+      expect(
+        ScrapboxService().isNotifiable({
+          ...baseAttachment,
+          title: '下書き あいうえお',
+        })
+      ).toBe(false);
 
-    test('「下書き　」の場合 false になる', async () => {
-      const attachment = { ...baseAttachment, title: '下書き　あいうえお' };
-      expect(ScrapboxService().isNotifiable(attachment)).toBe(false);
-    });
+      expect(
+        ScrapboxService().isNotifiable({
+          ...baseAttachment,
+          title: '下書き　あいうえお',
+        })
+      ).toBe(false);
 
-    test('「下書きあいうえお」の場合 true になる', async () => {
-      const attachment = { ...baseAttachment, title: '下書きあいうえお' };
-      expect(ScrapboxService().isNotifiable(attachment)).toBe(true);
-    });
+      expect(
+        ScrapboxService().isNotifiable({
+          ...baseAttachment,
+          title: '下書きあいうえお',
+        })
+      ).toBe(true);
 
-    test('「あいうえお下書きあいうえお」の場合 true になる', async () => {
-      const attachment = {
-        ...baseAttachment,
-        title: 'あいうえお下書きあいうえお',
-      };
-      expect(ScrapboxService().isNotifiable(attachment)).toBe(true);
-    });
+      expect(
+        ScrapboxService().isNotifiable({
+          ...baseAttachment,
+          title: 'あいうえお下書きあいうえお',
+        })
+      ).toBe(true);
 
-    test('空文字の場合 true になる', async () => {
-      const attachment = { ...baseAttachment, title: '' };
-      expect(ScrapboxService().isNotifiable(attachment)).toBe(true);
+      expect(
+        ScrapboxService().isNotifiable({ ...baseAttachment, title: '' })
+      ).toBe(true);
     });
   });
 
