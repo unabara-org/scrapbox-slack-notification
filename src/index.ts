@@ -14,7 +14,7 @@ const port = 8080;
 app.use(express.json());
 
 app.post('/push_to_slack', (req, res) => {
-  if (typeof process.env.SLACK_API_TOKEN == null) {
+  if (process.env.SLACK_API_TOKEN == null) {
     throw new Error('SLACK_API_TOKEN の値がありません');
   }
   const scrapboxNoticeObj = req.body as ScrapboxNotice;
