@@ -41,5 +41,5 @@ jobs:
             --image=${{ secrets.IMAGE_NAME }}:${{ env.TAG }} \
             --region=asia-northeast1 \
             --allow-unauthenticated \
-            --revision-suffix=dt${{ env.TAG }}
+            --revision-suffix=dt${{ env.TAG }} \
             --set-env-vars "SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }}"
